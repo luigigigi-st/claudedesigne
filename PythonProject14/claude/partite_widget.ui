@@ -1,0 +1,677 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>PartitePage</class>
+ <widget class="QWidget" name="PartitePage">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>950</width>
+    <height>750</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Partite</string>
+  </property>
+  <property name="styleSheet">
+   <string>
+QWidget#PartitePage {
+    background-color: #ecf0f1;
+}
+QLabel {
+    color: #34495e;
+    font-family: Helvetica;
+    font-size: 12pt;
+    background-color: transparent;
+    border: none;
+}
+QComboBox {
+    border: 1px solid #bdc3c7;
+    border-radius: 4px;
+    padding: 6px;
+    font-family: Helvetica;
+    font-size: 11pt;
+    background-color: white;
+    color: #2c3e50;
+}
+QComboBox:focus {
+    border: 1px solid #3498db;
+}
+QTableWidget {
+    background-color: white;
+    border: 1px solid #bdc3c7;
+    border-radius: 4px;
+    font-family: Helvetica;
+    font-size: 10pt;
+    color: #2c3e50;
+    alternate-background-color: #f2f3f4;
+    gridline-color: #ecf0f1;
+    outline: none;
+}
+QTableWidget::item {
+    padding: 4px;
+    border: none;
+}
+QTableWidget::item:selected {
+    background-color: #3498db;
+    color: white;
+}
+QTableWidget QTableCornerButton::section {
+    background-color: #34495e;
+    border: none;
+}
+QHeaderView {
+    background-color: #34495e;
+}
+QHeaderView::section {
+    background-color: #34495e;
+    color: white;
+    font-family: Helvetica;
+    font-size: 10pt;
+    font-weight: bold;
+    padding: 6px 8px;
+    border: none;
+    border-right: 1px solid #4a6278;
+}
+QHeaderView::section:last {
+    border-right: none;
+}
+QTabWidget::pane {
+    background-color: white;
+    border: 1px solid #bdc3c7;
+    border-top: none;
+    border-radius: 0px 0px 4px 4px;
+}
+QTabBar {
+    background-color: transparent;
+}
+QTabBar::tab {
+    background-color: #dfe6e9;
+    color: #636e72;
+    font-family: Helvetica;
+    font-size: 11pt;
+    font-weight: bold;
+    min-width: 120px;
+    padding: 9px 28px;
+    border: 1px solid #bdc3c7;
+    border-bottom: none;
+    border-radius: 5px 5px 0px 0px;
+    margin-right: 3px;
+}
+QTabBar::tab:selected {
+    background-color: #2c3e50;
+    color: white;
+    border-color: #2c3e50;
+}
+QTabBar::tab:hover:!selected {
+    background-color: #cfd8dc;
+}
+QPushButton {
+    font-family: Helvetica;
+    font-size: 11pt;
+    font-weight: bold;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 7px 16px;
+    min-height: 34px;
+}
+QPushButton#btn_assegna_gironi {
+    background-color: #1abc9c;
+}
+QPushButton#btn_assegna_gironi:hover { background-color: #16a085; }
+QPushButton#btn_genera_calendario {
+    background-color: #3498db;
+}
+QPushButton#btn_genera_calendario:hover { background-color: #2980b9; }
+QPushButton#btn_inserisci_risultato {
+    background-color: #f39c12;
+}
+QPushButton#btn_inserisci_risultato:hover { background-color: #d68910; }
+QPushButton#btn_correggi_risultato {
+    background-color: #95a5a6;
+}
+QPushButton#btn_correggi_risultato:hover { background-color: #7f8c8d; }
+QPushButton#btn_reset_gironi {
+    background-color: #e74c3c;
+}
+QPushButton#btn_reset_gironi:hover { background-color: #c0392b; }
+QPushButton#btn_genera_playoff {
+    background-color: #1abc9c;
+}
+QPushButton#btn_genera_playoff:hover { background-color: #16a085; }
+QPushButton#btn_inserisci_finale {
+    background-color: #f39c12;
+}
+QPushButton#btn_inserisci_finale:hover { background-color: #d68910; }
+QPushButton#btn_esporta_classifica {
+    background-color: #95a5a6;
+}
+QPushButton#btn_esporta_classifica:hover { background-color: #7f8c8d; }
+   </string>
+  </property>
+  <layout class="QVBoxLayout" name="vl_root">
+   <property name="spacing">
+    <number>15</number>
+   </property>
+   <property name="leftMargin">
+    <number>20</number>
+   </property>
+   <property name="topMargin">
+    <number>20</number>
+   </property>
+   <property name="rightMargin">
+    <number>20</number>
+   </property>
+   <property name="bottomMargin">
+    <number>20</number>
+   </property>
+   <item>
+    <widget class="QLabel" name="lbl_title">
+     <property name="styleSheet">
+      <string>font-size: 20pt; font-weight: bold; color: #2c3e50; background-color: transparent; padding: 6px 0px; border: none;</string>
+     </property>
+     <property name="text">
+      <string>🃏 Partite</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QFrame" name="frame_filter">
+     <property name="styleSheet">
+      <string>
+QFrame#frame_filter {
+    background-color: #ffffff;
+    border: 1px solid #bdc3c7;
+    border-radius: 6px;
+}
+QFrame#frame_filter QLabel {
+    border: none;
+    background-color: transparent;
+    color: #34495e;
+    font-family: Helvetica;
+    font-size: 12pt;
+}
+QFrame#frame_filter QComboBox {
+    border: 1px solid #bdc3c7;
+    border-radius: 4px;
+    padding: 6px;
+    font-family: Helvetica;
+    font-size: 11pt;
+    background-color: white;
+    color: #2c3e50;
+    min-width: 280px;
+}
+QFrame#frame_filter QComboBox:focus { border: 1px solid #3498db; }
+     </string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Raised</enum>
+     </property>
+     <layout class="QHBoxLayout" name="hl_filter">
+      <property name="spacing">
+       <number>12</number>
+      </property>
+      <property name="leftMargin">
+       <number>16</number>
+      </property>
+      <property name="topMargin">
+       <number>12</number>
+      </property>
+      <property name="rightMargin">
+       <number>16</number>
+      </property>
+      <property name="bottomMargin">
+       <number>12</number>
+      </property>
+      <item>
+       <widget class="QLabel" name="lbl_torneo">
+        <property name="text">
+         <string>Torneo:</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QComboBox" name="cmb_tornei"/>
+      </item>
+      <item>
+       <spacer>
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QTabWidget" name="tab_partite">
+     <property name="usesScrollButtons">
+      <bool>false</bool>
+     </property>
+     <widget class="QWidget" name="tab_gironi">
+      <property name="styleSheet">
+       <string>
+QWidget#tab_gironi { background-color: #ffffff; }
+QWidget#tab_gironi QLabel {
+    background-color: transparent;
+    color: #34495e;
+    font-family: Helvetica;
+    font-size: 11pt;
+    font-weight: bold;
+    border: none;
+}
+      </string>
+      </property>
+      <attribute name="title">
+       <string>  Gironi  </string>
+      </attribute>
+      <layout class="QVBoxLayout" name="vl_gironi">
+       <property name="spacing">
+        <number>10</number>
+       </property>
+       <property name="leftMargin">
+        <number>12</number>
+       </property>
+       <property name="topMargin">
+        <number>12</number>
+       </property>
+       <property name="rightMargin">
+        <number>12</number>
+       </property>
+       <property name="bottomMargin">
+        <number>12</number>
+       </property>
+       <item>
+        <layout class="QHBoxLayout" name="hl_btn_gironi">
+         <property name="spacing">
+          <number>10</number>
+         </property>
+         <item>
+          <widget class="QPushButton" name="btn_assegna_gironi">
+           <property name="text">
+            <string>Assegna Gironi</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="btn_reset_gironi">
+           <property name="text">
+            <string>↺  Reset Gironi</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="btn_genera_calendario">
+           <property name="text">
+            <string>Genera Calendario</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="btn_inserisci_risultato">
+           <property name="text">
+            <string>✚  Risultato</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="btn_correggi_risultato">
+           <property name="text">
+            <string>✎  Correggi</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer>
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <widget class="QLabel" name="lbl_calendario">
+         <property name="text">
+          <string>Calendario partite</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QTableWidget" name="tbl_calendario">
+         <property name="verticalScrollBarPolicy">
+          <enum>Qt::ScrollBarAsNeeded</enum>
+         </property>
+         <property name="horizontalScrollBarPolicy">
+          <enum>Qt::ScrollBarAsNeeded</enum>
+         </property>
+         <property name="editTriggers">
+          <set>QAbstractItemView::NoEditTriggers</set>
+         </property>
+         <property name="alternatingRowColors">
+          <bool>true</bool>
+         </property>
+         <property name="selectionBehavior">
+          <enum>QAbstractItemView::SelectRows</enum>
+         </property>
+         <attribute name="horizontalHeaderStretchLastSection">
+          <bool>true</bool>
+         </attribute>
+         <column>
+          <property name="text">
+           <string>ID</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Turno</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Fase</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Squadra A</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Punt. A</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Punt. B</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Squadra B</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Luogo</string>
+          </property>
+         </column>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="lbl_classifica_gironi">
+         <property name="text">
+          <string>Classifica Gironi</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QTableWidget" name="tbl_classifica_gironi">
+         <property name="verticalScrollBarPolicy">
+          <enum>Qt::ScrollBarAsNeeded</enum>
+         </property>
+         <property name="horizontalScrollBarPolicy">
+          <enum>Qt::ScrollBarAsNeeded</enum>
+         </property>
+         <property name="editTriggers">
+          <set>QAbstractItemView::NoEditTriggers</set>
+         </property>
+         <property name="alternatingRowColors">
+          <bool>true</bool>
+         </property>
+         <property name="selectionBehavior">
+          <enum>QAbstractItemView::SelectRows</enum>
+         </property>
+         <attribute name="horizontalHeaderStretchLastSection">
+          <bool>true</bool>
+         </attribute>
+         <column>
+          <property name="text">
+           <string>Pos.</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Girone</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Squadra</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>G</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>V</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>P</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Punti</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Diff.</string>
+          </property>
+         </column>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="tab_playoff">
+      <property name="styleSheet">
+       <string>
+QWidget#tab_playoff { background-color: #ffffff; }
+QWidget#tab_playoff QLabel {
+    background-color: transparent;
+    color: #34495e;
+    font-family: Helvetica;
+    font-size: 11pt;
+    font-weight: bold;
+    border: none;
+}
+      </string>
+      </property>
+      <attribute name="title">
+       <string>  Playoff  </string>
+      </attribute>
+      <layout class="QVBoxLayout" name="vl_playoff">
+       <property name="spacing">
+        <number>10</number>
+       </property>
+       <property name="leftMargin">
+        <number>12</number>
+       </property>
+       <property name="topMargin">
+        <number>12</number>
+       </property>
+       <property name="rightMargin">
+        <number>12</number>
+       </property>
+       <property name="bottomMargin">
+        <number>12</number>
+       </property>
+       <item>
+        <layout class="QHBoxLayout" name="hl_btn_playoff">
+         <property name="spacing">
+          <number>10</number>
+         </property>
+         <item>
+          <widget class="QPushButton" name="btn_genera_playoff">
+           <property name="text">
+            <string>Genera Tabellone</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="btn_inserisci_finale">
+           <property name="text">
+            <string>✚  Risultato Finale</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="btn_esporta_classifica">
+           <property name="text">
+            <string>↓  Esporta CSV</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer>
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <widget class="QLabel" name="lbl_tabellone">
+         <property name="text">
+          <string>Tabellone Playoff</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QTableWidget" name="tbl_tabellone">
+         <property name="verticalScrollBarPolicy">
+          <enum>Qt::ScrollBarAsNeeded</enum>
+         </property>
+         <property name="horizontalScrollBarPolicy">
+          <enum>Qt::ScrollBarAsNeeded</enum>
+         </property>
+         <property name="editTriggers">
+          <set>QAbstractItemView::NoEditTriggers</set>
+         </property>
+         <property name="alternatingRowColors">
+          <bool>true</bool>
+         </property>
+         <property name="selectionBehavior">
+          <enum>QAbstractItemView::SelectRows</enum>
+         </property>
+         <attribute name="horizontalHeaderStretchLastSection">
+          <bool>true</bool>
+         </attribute>
+         <column>
+          <property name="text">
+           <string>ID</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Fase</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Squadra A</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Punt. A</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Punt. B</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Squadra B</string>
+          </property>
+         </column>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="lbl_classifica_finale">
+         <property name="text">
+          <string>Classifica Finale</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QTableWidget" name="tbl_classifica_finale">
+         <property name="verticalScrollBarPolicy">
+          <enum>Qt::ScrollBarAsNeeded</enum>
+         </property>
+         <property name="horizontalScrollBarPolicy">
+          <enum>Qt::ScrollBarAsNeeded</enum>
+         </property>
+         <property name="editTriggers">
+          <set>QAbstractItemView::NoEditTriggers</set>
+         </property>
+         <property name="alternatingRowColors">
+          <bool>true</bool>
+         </property>
+         <property name="selectionBehavior">
+          <enum>QAbstractItemView::SelectRows</enum>
+         </property>
+         <attribute name="horizontalHeaderStretchLastSection">
+          <bool>true</bool>
+         </attribute>
+         <column>
+          <property name="text">
+           <string>Posto</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Squadra</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Punti Totali</string>
+          </property>
+         </column>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

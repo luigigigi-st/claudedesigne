@@ -1,0 +1,107 @@
+-- =====================
+-- CREAZIONE DATABASE
+-- =====================
+CREATE DATABASE IF NOT EXISTS Progetto_Torneo_chill;
+USE Progetto_Torneo_chill;
+
+-- =====================
+-- TABELLA TORNEO
+-- =====================
+CREATE TABLE IF NOT EXISTS torneo (
+    nome                   VARCHAR(100)   NOT NULL PRIMARY KEY,
+    singolo_doppio         BOOLEAN        NOT NULL,
+    quota_iscrizione       DECIMAL(10,2)  DEFAULT 0 CHECK (quota_iscrizione >= 0),
+    email_iscrizioni       VARCHAR(200)   DEFAULT NULL,
+    max_squadre            INT UNSIGNED   DEFAULT NULL
+);
+
+-- =====================
+-- TABELLA SQUADRA
+-- =====================
+CREATE TABLE IF NOT EXISTS squadra (
+    id_squadra      INT AUTO_INCREMENT PRIMARY KEY,
+    nome            VARCHAR(100) NOT NULL,
+    nome_torneo     VARCHAR(100) NOT NULL,
+    squalificato    BOOLEAN      DEFAULT FALSE,
+    girone          CHAR(1)      DEFAULT NULL,
+    FOREIGN KEY (nome_torneo) REFERENCES torneo(nome)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE
+);
+
+-- =====================
+-- TABELLA INDIRIZZO
+-- =====================
+CREATE TABLE IF NOT EXISTS indirizzo (
+    id_indirizzo  INT AUTO_INCREMENT PRIMARY KEY,
+    via           VARCHAR(100) NOT NULL,
+    numero_civico VARCHAR(10)  NOT NULL,
+    cap           VARCHAR(10)  NOT NULL,
+    citta         VARCHAR(100) NOT NULL
+);
+
+-- =====================
+-- TABELLA PARTECIPANTE (AGGIORNATA)
+-- =====================
+CREATE TABLE IF NOT EXISTS partecipante (
+    id_partecipante INT AUTO_INCREMENT PRIMARY KEY,
+    nome            VARCHAR(50)  NOT NULL,
+    cognome         VARCHAR(50)  NOT NULL,
+    soprannome      VARCHAR(50)  DEFAULT NULL, -- Spostato qui
+    id_squadra      INT          NOT NULL,     -- Collegamento diretto alla squadra
+    id_indirizzo    INT          DEFAULT NULL,
+    
+    -- Chiave esterna verso la squadra
+    FOREIGN KEY (id_squadra) REFERENCES squadra(id_squadra)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE,
+        
+    -- Chiave esterna verso l'indirizzo
+    FOREIGN KEY (id_indirizzo) REFERENCES indirizzo(id_indirizzo)
+        ON DELETE SET NULL
+        ON UPDATE CASCADE
+);
+
+-- LA TABELLA squadra_partecipante E' STATA ELIMINATA --
+
+-- =====================
+-- TABELLA TURNO
+-- =====================
+CREATE TABLE IF NOT EXISTS turno (
+    id_turno    INT AUTO_INCREMENT PRIMARY KEY,
+    numero      INT          NOT NULL,
+    nome_torneo VARCHAR(100) NOT NULL,
+    fase        VARCHAR(30)  NOT NULL DEFAULT 'girone',
+    UNIQUE (numero, nome_torneo),
+    FOREIGN KEY (nome_torneo) REFERENCES torneo(nome)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE
+);
+
+-- =====================
+-- TABELLA PARTITA
+-- =====================
+CREATE TABLE IF NOT EXISTS partita (
+    id_partita INT AUTO_INCREMENT PRIMARY KEY,
+    id_turno   INT          NOT NULL,
+    luogo      VARCHAR(100) NOT NULL,
+    FOREIGN KEY (id_turno) REFERENCES turno(id_turno)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE
+);
+
+-- =====================
+-- RELAZIONE PARTITA - SQUADRA
+-- =====================
+CREATE TABLE IF NOT EXISTS partita_squadra (
+    id_partita INT  NOT NULL,
+    id_squadra INT  NOT NULL,
+    punteggio  INT  DEFAULT NULL,
+    PRIMARY KEY (id_partita, id_squadra),
+    FOREIGN KEY (id_partita) REFERENCES partita(id_partita)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE,
+    FOREIGN KEY (id_squadra) REFERENCES squadra(id_squadra)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE
+);

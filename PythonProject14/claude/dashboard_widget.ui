@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>DashboardWidget</class>
+ <widget class="QWidget" name="DashboardWidget">
+  <property name="geometry">
+   <rect><x>0</x><y>0</y><width>950</width><height>750</height></rect>
+  </property>
+  <property name="windowTitle"><string>Dashboard</string></property>
+  <property name="styleSheet">
+   <string>QWidget#DashboardWidget { background-color: #ecf0f1; }</string>
+  </property>
+
+  <layout class="QVBoxLayout" name="vl_root">
+   <property name="spacing"><number>0</number></property>
+   <property name="leftMargin"><number>0</number></property>
+   <property name="topMargin"><number>0</number></property>
+   <property name="rightMargin"><number>0</number></property>
+   <property name="bottomMargin"><number>0</number></property>
+
+   <item>
+    <layout class="QVBoxLayout" name="vl_content">
+     <property name="spacing"><number>16</number></property>
+     <property name="leftMargin"><number>20</number></property>
+     <property name="topMargin"><number>20</number></property>
+     <property name="rightMargin"><number>20</number></property>
+     <property name="bottomMargin"><number>20</number></property>
+
+     <!-- TITOLO -->
+     <item>
+      <widget class="QLabel" name="label_title">
+       <property name="text">
+        <string>&lt;b&gt;&lt;span style="font-size:20pt; color:#2c3e50;"&gt;📊 Dashboard&lt;/span&gt;&lt;/b&gt;</string>
+       </property>
+       <property name="alignment"><set>Qt::AlignCenter</set></property>
+      </widget>
+     </item>
+
+     <!-- CARDS CONTATORI -->
+     <item>
+      <layout class="QHBoxLayout" name="hl_cards">
+       <property name="spacing"><number>14</number></property>
+
+       <item>
+        <widget class="QFrame" name="card_totali">
+         <property name="minimumSize"><size><width>0</width><height>90</height></size></property>
+         <property name="styleSheet">
+          <string>QFrame#card_totali { background-color: #3498db; border-radius: 8px; }</string>
+         </property>
+         <property name="frameShape"><enum>QFrame::StyledPanel</enum></property>
+         <layout class="QVBoxLayout">
+          <property name="spacing"><number>4</number></property>
+          <item>
+           <widget class="QLabel" name="lbl_totali_val">
+            <property name="text"><string>0</string></property>
+            <property name="alignment"><set>Qt::AlignCenter</set></property>
+            <property name="styleSheet"><string>QLabel { color: white; font-size: 28pt; font-weight: bold; font-family: Helvetica; }</string></property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="lbl_totali_lbl">
+            <property name="text"><string>Tornei Totali</string></property>
+            <property name="alignment"><set>Qt::AlignCenter</set></property>
+            <property name="styleSheet"><string>QLabel { color: white; font-size: 11pt; font-family: Helvetica; }</string></property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+
+       <item>
+        <widget class="QFrame" name="card_in_corso">
+         <property name="minimumSize"><size><width>0</width><height>90</height></size></property>
+         <property name="styleSheet">
+          <string>QFrame#card_in_corso { background-color: #f39c12; border-radius: 8px; }</string>
+         </property>
+         <property name="frameShape"><enum>QFrame::StyledPanel</enum></property>
+         <layout class="QVBoxLayout">
+          <property name="spacing"><number>4</number></property>
+          <item>
+           <widget class="QLabel" name="lbl_in_corso_val">
+            <property name="text"><string>0</string></property>
+            <property name="alignment"><set>Qt::AlignCenter</set></property>
+            <property name="styleSheet"><string>QLabel { color: white; font-size: 28pt; font-weight: bold; font-family: Helvetica; }</string></property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="lbl_in_corso_lbl">
+            <property name="text"><string>In Corso</string></property>
+            <property name="alignment"><set>Qt::AlignCenter</set></property>
+            <property name="styleSheet"><string>QLabel { color: white; font-size: 11pt; font-family: Helvetica; }</string></property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+
+       <item>
+        <widget class="QFrame" name="card_conclusi">
+         <property name="minimumSize"><size><width>0</width><height>90</height></size></property>
+         <property name="styleSheet">
+          <string>QFrame#card_conclusi { background-color: #2ecc71; border-radius: 8px; }</string>
+         </property>
+         <property name="frameShape"><enum>QFrame::StyledPanel</enum></property>
+         <layout class="QVBoxLayout">
+          <property name="spacing"><number>4</number></property>
+          <item>
+           <widget class="QLabel" name="lbl_conclusi_val">
+            <property name="text"><string>0</string></property>
+            <property name="alignment"><set>Qt::AlignCenter</set></property>
+            <property name="styleSheet"><string>QLabel { color: white; font-size: 28pt; font-weight: bold; font-family: Helvetica; }</string></property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="lbl_conclusi_lbl">
+            <property name="text"><string>Conclusi</string></property>
+            <property name="alignment"><set>Qt::AlignCenter</set></property>
+            <property name="styleSheet"><string>QLabel { color: white; font-size: 11pt; font-family: Helvetica; }</string></property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+
+       <item>
+        <widget class="QFrame" name="card_partecipanti">
+         <property name="minimumSize"><size><width>0</width><height>90</height></size></property>
+         <property name="styleSheet">
+          <string>QFrame#card_partecipanti { background-color: #9b59b6; border-radius: 8px; }</string>
+         </property>
+         <property name="frameShape"><enum>QFrame::StyledPanel</enum></property>
+         <layout class="QVBoxLayout">
+          <property name="spacing"><number>4</number></property>
+          <item>
+           <widget class="QLabel" name="lbl_partecipanti_val">
+            <property name="text"><string>0</string></property>
+            <property name="alignment"><set>Qt::AlignCenter</set></property>
+            <property name="styleSheet"><string>QLabel { color: white; font-size: 28pt; font-weight: bold; font-family: Helvetica; }</string></property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="lbl_partecipanti_lbl">
+            <property name="text"><string>Partecipanti</string></property>
+            <property name="alignment"><set>Qt::AlignCenter</set></property>
+            <property name="styleSheet"><string>QLabel { color: white; font-size: 11pt; font-family: Helvetica; }</string></property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+
+       <item>
+        <widget class="QFrame" name="card_partite">
+         <property name="minimumSize"><size><width>0</width><height>90</height></size></property>
+         <property name="styleSheet">
+          <string>QFrame#card_partite { background-color: #e74c3c; border-radius: 8px; }</string>
+         </property>
+         <property name="frameShape"><enum>QFrame::StyledPanel</enum></property>
+         <layout class="QVBoxLayout">
+          <property name="spacing"><number>4</number></property>
+          <item>
+           <widget class="QLabel" name="lbl_partite_val">
+            <property name="text"><string>0</string></property>
+            <property name="alignment"><set>Qt::AlignCenter</set></property>
+            <property name="styleSheet"><string>QLabel { color: white; font-size: 28pt; font-weight: bold; font-family: Helvetica; }</string></property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="lbl_partite_lbl">
+            <property name="text"><string>Partite Giocate</string></property>
+            <property name="alignment"><set>Qt::AlignCenter</set></property>
+            <property name="styleSheet"><string>QLabel { color: white; font-size: 11pt; font-family: Helvetica; }</string></property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+
+      </layout>
+     </item>
+
+     <!-- SEZIONE TORNEI -->
+     <item>
+      <widget class="QLabel" name="lbl_sezione_tornei">
+       <property name="text"><string>🏆 Tutti i Tornei</string></property>
+       <property name="styleSheet">
+        <string>QLabel { color: #2c3e50; font-family: Helvetica; font-size: 13pt; font-weight: bold; }</string>
+       </property>
+      </widget>
+     </item>
+
+     <!-- TABELLA TORNEI -->
+     <item>
+      <widget class="QTreeWidget" name="tbl_tornei">
+       <property name="font"><font><family>Helvetica</family><pointsize>10</pointsize></font></property>
+       <property name="alternatingRowColors"><bool>true</bool></property>
+       <property name="selectionMode"><enum>QAbstractItemView::SingleSelection</enum></property>
+       <property name="selectionBehavior"><enum>QAbstractItemView::SelectRows</enum></property>
+       <property name="editTriggers"><set>QAbstractItemView::NoEditTriggers</set></property>
+       <property name="rootIsDecorated"><bool>false</bool></property>
+       <property name="styleSheet">
+        <string>
+QTreeWidget { background-color: white; border: 1px solid #bdc3c7; border-radius: 4px; }
+QTreeWidget::item { padding: 5px; }
+QTreeWidget::item:selected { background-color: #3498db; color: white; }
+QHeaderView::section { background-color: #34495e; color: white; font-weight: bold; padding: 6px; border: none; font-family: Helvetica; font-size: 10pt; }
+        </string>
+       </property>
+       <column><property name="text"><string>Nome Torneo</string></property><property name="minimumWidth"><number>180</number></property></column>
+       <column><property name="text"><string>Tipo</string></property><property name="minimumWidth"><number>80</number></property></column>
+       <column><property name="text"><string>Stato</string></property><property name="minimumWidth"><number>170</number></property></column>
+       <column><property name="text"><string>Iscritti</string></property><property name="minimumWidth"><number>80</number></property></column>
+       <column><property name="text"><string>Max</string></property><property name="minimumWidth"><number>60</number></property></column>
+       <column><property name="text"><string>Partite Giocate</string></property><property name="minimumWidth"><number>120</number></property></column>
+       <column><property name="text"><string>Partite Totali</string></property><property name="minimumWidth"><number>110</number></property></column>
+      </widget>
+     </item>
+
+     <!-- BOTTONE AGGIORNA -->
+     <item>
+      <layout class="QHBoxLayout">
+       <item>
+        <spacer><property name="orientation"><enum>Qt::Horizontal</enum></property><property name="sizeHint" stdset="0"><size><width>40</width><height>20</height></size></property></spacer>
+       </item>
+       <item>
+        <widget class="QPushButton" name="btn_refresh">
+         <property name="minimumSize"><size><width>150</width><height>38</height></size></property>
+         <property name="text"><string>↻  Aggiorna</string></property>
+         <property name="styleSheet">
+          <string>QPushButton { background-color: #34495e; color: white; border-radius: 6px; font-family: Helvetica; font-size: 11pt; font-weight: bold; } QPushButton:hover { background-color: #2c3e50; }</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

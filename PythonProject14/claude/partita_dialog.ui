@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>PartitaDialog</class>
+ <widget class="QDialog" name="PartitaDialog">
+  <property name="geometry">
+   <rect><x>0</x><y>0</y><width>540</width><height>520</height></rect>
+  </property>
+  <property name="windowTitle"><string>Partita</string></property>
+  <property name="styleSheet">
+   <string>
+QDialog { background-color: #ecf0f1; }
+QLabel { color: #34495e; font-family: Helvetica; font-size: 12pt; }
+QLineEdit, QComboBox, QDateEdit, QTimeEdit, QSpinBox {
+    border: 1px solid #bdc3c7;
+    border-radius: 4px;
+    padding: 6px;
+    font-family: Helvetica;
+    font-size: 11pt;
+    background-color: white;
+}
+QLineEdit:focus, QComboBox:focus, QDateEdit:focus, QTimeEdit:focus, QSpinBox:focus {
+    border: 1px solid #3498db;
+}
+   </string>
+  </property>
+
+  <layout class="QVBoxLayout" name="verticalLayout_main">
+   <property name="spacing"><number>0</number></property>
+   <property name="leftMargin"><number>0</number></property>
+   <property name="topMargin"><number>0</number></property>
+   <property name="rightMargin"><number>0</number></property>
+   <property name="bottomMargin"><number>0</number></property>
+
+   <!-- HEADER -->
+   <item>
+    <widget class="QFrame" name="frame_header">
+     <property name="minimumSize"><size><width>0</width><height>60</height></size></property>
+     <property name="maximumSize"><size><width>16777215</width><height>60</height></size></property>
+     <property name="styleSheet"><string>QFrame#frame_header { background-color: #2c3e50; }</string></property>
+     <layout class="QVBoxLayout" name="vl_header">
+      <item>
+       <widget class="QLabel" name="label_dialog_title">
+        <property name="text"><string>Gestione Partita</string></property>
+        <property name="alignment"><set>Qt::AlignCenter</set></property>
+        <property name="styleSheet"><string>QLabel { color: white; font-family: Helvetica; font-size: 16pt; font-weight: bold; }</string></property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+
+   <!-- BODY -->
+   <item>
+    <layout class="QVBoxLayout" name="vl_body">
+     <property name="spacing"><number>16</number></property>
+     <property name="leftMargin"><number>30</number></property>
+     <property name="topMargin"><number>20</number></property>
+     <property name="rightMargin"><number>30</number></property>
+     <property name="bottomMargin"><number>20</number></property>
+
+     <!-- DETTAGLI PARTITA -->
+     <item>
+      <widget class="QFrame" name="frame_partita">
+       <property name="styleSheet"><string>QFrame#frame_partita { background-color: white; border: 1px solid #bdc3c7; border-radius: 6px; }</string></property>
+       <layout class="QVBoxLayout" name="vl_partita">
+        <property name="leftMargin"><number>20</number></property>
+        <property name="topMargin"><number>15</number></property>
+        <property name="rightMargin"><number>20</number></property>
+        <property name="bottomMargin"><number>15</number></property>
+        <property name="spacing"><number>12</number></property>
+        <item>
+         <widget class="QLabel" name="label_section_partita">
+          <property name="text"><string>Dettagli Partita</string></property>
+          <property name="styleSheet"><string>QLabel { color: #2c3e50; font-weight: bold; font-size: 11pt; border-bottom: 1px solid #bdc3c7; padding-bottom: 4px; }</string></property>
+         </widget>
+        </item>
+        <item>
+         <layout class="QGridLayout" name="grid_partita">
+          <property name="horizontalSpacing"><number>15</number></property>
+          <property name="verticalSpacing"><number>10</number></property>
+
+          <item row="0" column="0"><widget class="QLabel" name="label_torneo"><property name="text"><string>Torneo:</string></property></widget></item>
+          <item row="0" column="1" colspan="3"><widget class="QComboBox" name="combo_torneo"/></item>
+
+          <item row="1" column="0"><widget class="QLabel" name="label_turno"><property name="text"><string>Turno N°:</string></property></widget></item>
+          <item row="1" column="1">
+           <widget class="QSpinBox" name="spin_turno">
+            <property name="minimum"><number>1</number></property>
+            <property name="maximum"><number>999</number></property>
+           </widget>
+          </item>
+
+          <item row="2" column="0"><widget class="QLabel" name="label_data"><property name="text"><string>Data:</string></property></widget></item>
+          <item row="2" column="1">
+           <widget class="QDateEdit" name="date_partita">
+            <property name="calendarPopup"><bool>true</bool></property>
+            <property name="displayFormat"><string>dd/MM/yyyy</string></property>
+           </widget>
+          </item>
+          <item row="2" column="2"><widget class="QLabel" name="label_orario"><property name="text"><string>Orario:</string></property></widget></item>
+          <item row="2" column="3">
+           <widget class="QTimeEdit" name="time_partita">
+            <property name="displayFormat"><string>HH:mm</string></property>
+           </widget>
+          </item>
+
+          <item row="3" column="0"><widget class="QLabel" name="label_luogo"><property name="text"><string>Luogo:</string></property></widget></item>
+          <item row="3" column="1" colspan="3">
+           <widget class="QLineEdit" name="entry_luogo">
+            <property name="maxLength"><number>100</number></property>
+            <property name="placeholderText"><string>Indirizzo o nome del luogo</string></property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+     </item>
+
+     <!-- SQUADRE E PUNTEGGI -->
+     <item>
+      <widget class="QFrame" name="frame_squadre">
+       <property name="styleSheet"><string>QFrame#frame_squadre { background-color: white; border: 1px solid #bdc3c7; border-radius: 6px; }</string></property>
+       <layout class="QVBoxLayout" name="vl_squadre">
+        <property name="leftMargin"><number>20</number></property>
+        <property name="topMargin"><number>15</number></property>
+        <property name="rightMargin"><number>20</number></property>
+        <property name="bottomMargin"><number>15</number></property>
+        <property name="spacing"><number>12</number></property>
+        <item>
+         <widget class="QLabel" name="label_section_squadre">
+          <property name="text"><string>Squadre e Punteggi</string></property>
+          <property name="styleSheet"><string>QLabel { color: #2c3e50; font-weight: bold; font-size: 11pt; border-bottom: 1px solid #bdc3c7; padding-bottom: 4px; }</string></property>
+         </widget>
+        </item>
+        <!--
+          Nota: GPU.py valida che spin_punteggio1 + spin_punteggio2 == punteggio_max_parita.
+          specialValueText "N/D" RIMOSSO perché 0 è un punteggio valido a Briscola
+          (es. 0–120 è un risultato legittimo).
+        -->
+        <item>
+         <layout class="QGridLayout" name="grid_squadre">
+          <property name="horizontalSpacing"><number>15</number></property>
+          <property name="verticalSpacing"><number>10</number></property>
+
+          <item row="0" column="0"><widget class="QLabel" name="label_squadra1"><property name="text"><string>Squadra 1:</string></property></widget></item>
+          <item row="0" column="1"><widget class="QComboBox" name="combo_squadra1"/></item>
+          <item row="0" column="2"><widget class="QLabel" name="label_punteggio1"><property name="text"><string>Punti:</string></property></widget></item>
+          <item row="0" column="3">
+           <widget class="QSpinBox" name="spin_punteggio1">
+            <!-- specialValueText rimosso: 0 è un punteggio valido -->
+            <property name="minimum"><number>0</number></property>
+            <property name="maximum"><number>9999</number></property>
+           </widget>
+          </item>
+
+          <item row="1" column="0"><widget class="QLabel" name="label_squadra2"><property name="text"><string>Squadra 2:</string></property></widget></item>
+          <item row="1" column="1"><widget class="QComboBox" name="combo_squadra2"/></item>
+          <item row="1" column="2"><widget class="QLabel" name="label_punteggio2"><property name="text"><string>Punti:</string></property></widget></item>
+          <item row="1" column="3">
+           <widget class="QSpinBox" name="spin_punteggio2">
+            <!-- specialValueText rimosso: 0 è un punteggio valido -->
+            <property name="minimum"><number>0</number></property>
+            <property name="maximum"><number>9999</number></property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+     </item>
+
+     <!-- BUTTONS -->
+     <item>
+      <layout class="QHBoxLayout" name="hl_buttons">
+       <property name="spacing"><number>15</number></property>
+       <item>
+        <spacer><property name="orientation"><enum>Qt::Horizontal</enum></property><property name="sizeHint" stdset="0"><size><width>40</width><height>20</height></size></property></spacer>
+       </item>
+       <item>
+        <widget class="QPushButton" name="btn_cancel">
+         <property name="minimumSize"><size><width>130</width><height>40</height></size></property>
+         <property name="text"><string>Annulla</string></property>
+         <property name="styleSheet"><string>QPushButton{background-color:#95a5a6;color:white;border-radius:6px;font-family:Helvetica;font-size:12pt;font-weight:bold;}QPushButton:hover{background-color:#7f8c8d;}</string></property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="btn_save">
+         <property name="minimumSize"><size><width>130</width><height>40</height></size></property>
+         <property name="text"><string>Salva</string></property>
+         <property name="styleSheet"><string>QPushButton{background-color:#1abc9c;color:white;border-radius:6px;font-family:Helvetica;font-size:12pt;font-weight:bold;}QPushButton:hover{background-color:#16a085;}</string></property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

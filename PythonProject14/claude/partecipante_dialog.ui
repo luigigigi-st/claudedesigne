@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>PartecipanteDialog</class>
+ <widget class="QDialog" name="PartecipanteDialog">
+  <property name="geometry">
+   <rect><x>0</x><y>0</y><width>520</width><height>480</height></rect>
+  </property>
+  <property name="windowTitle"><string>Partecipante</string></property>
+  <property name="styleSheet">
+   <string>
+QDialog { background-color: #ecf0f1; }
+QLabel { color: #34495e; font-family: Helvetica; font-size: 11pt; }
+QLineEdit {
+    border: 1px solid #bdc3c7; border-radius: 4px; padding: 6px;
+    font-family: Helvetica; font-size: 11pt; background-color: white;
+}
+QLineEdit:focus { border: 1px solid #3498db; }
+   </string>
+  </property>
+  <property name="modal"><bool>true</bool></property>
+
+  <layout class="QVBoxLayout" name="vl_root">
+   <property name="spacing"><number>14</number></property>
+   <property name="leftMargin"><number>24</number></property>
+   <property name="topMargin"><number>20</number></property>
+   <property name="rightMargin"><number>24</number></property>
+   <property name="bottomMargin"><number>20</number></property>
+
+   <!-- HEADER -->
+   <item>
+    <widget class="QFrame" name="frame_header">
+     <property name="minimumSize"><size><width>0</width><height>54</height></size></property>
+     <property name="maximumSize"><size><width>16777215</width><height>54</height></size></property>
+     <property name="styleSheet">
+      <string>QFrame#frame_header { background-color: #2c3e50; border-radius: 6px; }</string>
+     </property>
+     <layout class="QVBoxLayout" name="vl_header">
+      <property name="leftMargin"><number>10</number></property>
+      <property name="topMargin"><number>6</number></property>
+      <property name="rightMargin"><number>10</number></property>
+      <property name="bottomMargin"><number>6</number></property>
+      <item>
+       <widget class="QLabel" name="label_dialog_title">
+        <property name="text"><string>👤 Nuovo Partecipante</string></property>
+        <property name="alignment"><set>Qt::AlignCenter</set></property>
+        <property name="styleSheet">
+         <string>QLabel { color: white; font-size: 14pt; font-weight: bold; font-family: Helvetica; }</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+
+   <!-- SEZIONE DATI ANAGRAFICI -->
+   <item>
+    <widget class="QLabel" name="label_section_anagrafica">
+     <property name="text"><string>── Dati Anagrafici ──</string></property>
+     <property name="styleSheet">
+      <string>QLabel { font-weight: bold; color: #2c3e50; font-family: Helvetica; font-size: 11pt; }</string>
+     </property>
+    </widget>
+   </item>
+
+   <item>
+    <layout class="QGridLayout" name="grid_anagrafica">
+     <property name="horizontalSpacing"><number>12</number></property>
+     <property name="verticalSpacing"><number>8</number></property>
+
+     <item row="0" column="0">
+      <widget class="QLabel" name="label_nome"><property name="text"><string>Nome *</string></property></widget>
+     </item>
+     <item row="0" column="1">
+      <widget class="QLineEdit" name="entry_nome">
+       <property name="maxLength"><number>50</number></property>
+       <property name="placeholderText"><string>Nome</string></property>
+      </widget>
+     </item>
+     <item row="0" column="2">
+      <widget class="QLabel" name="label_cognome"><property name="text"><string>Cognome *</string></property></widget>
+     </item>
+     <item row="0" column="3">
+      <widget class="QLineEdit" name="entry_cognome">
+       <property name="maxLength"><number>50</number></property>
+       <property name="placeholderText"><string>Cognome</string></property>
+      </widget>
+     </item>
+
+     <item row="1" column="0">
+      <widget class="QLabel" name="label_soprannome"><property name="text"><string>Soprannome *</string></property></widget>
+     </item>
+     <item row="1" column="1" colspan="3">
+      <widget class="QLineEdit" name="entry_soprannome">
+       <property name="maxLength"><number>50</number></property>
+       <property name="placeholderText"><string>Nome usato in gara</string></property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+
+   <!-- SEZIONE INDIRIZZO -->
+   <item>
+    <widget class="QLabel" name="label_section_indirizzo">
+     <property name="text"><string>── Indirizzo (opzionale) ──</string></property>
+     <property name="styleSheet">
+      <string>QLabel { font-weight: bold; color: #2c3e50; font-family: Helvetica; font-size: 11pt; }</string>
+     </property>
+    </widget>
+   </item>
+
+   <item>
+    <layout class="QGridLayout" name="grid_indirizzo">
+     <property name="horizontalSpacing"><number>12</number></property>
+     <property name="verticalSpacing"><number>8</number></property>
+
+     <item row="0" column="0">
+      <widget class="QLabel" name="label_via"><property name="text"><string>Via</string></property></widget>
+     </item>
+     <item row="0" column="1" colspan="3">
+      <widget class="QLineEdit" name="entry_via">
+       <property name="maxLength"><number>100</number></property>
+       <property name="placeholderText"><string>Nome della via</string></property>
+      </widget>
+     </item>
+
+     <item row="1" column="0">
+      <widget class="QLabel" name="label_civico"><property name="text"><string>N° Civico</string></property></widget>
+     </item>
+     <item row="1" column="1">
+      <widget class="QLineEdit" name="entry_civico">
+       <property name="maxLength"><number>10</number></property>
+       <property name="placeholderText"><string>Es. 12/A</string></property>
+      </widget>
+     </item>
+     <item row="1" column="2">
+      <widget class="QLabel" name="label_cap"><property name="text"><string>CAP</string></property></widget>
+     </item>
+     <item row="1" column="3">
+      <widget class="QLineEdit" name="entry_cap">
+       <property name="maxLength"><number>10</number></property>
+       <property name="placeholderText"><string>00000</string></property>
+      </widget>
+     </item>
+
+     <item row="2" column="0">
+      <widget class="QLabel" name="label_citta"><property name="text"><string>Città</string></property></widget>
+     </item>
+     <item row="2" column="1" colspan="3">
+      <widget class="QLineEdit" name="entry_citta">
+       <property name="maxLength"><number>100</number></property>
+       <property name="placeholderText"><string>Città di residenza</string></property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+
+   <!-- SPACER -->
+   <item>
+    <spacer>
+     <property name="orientation"><enum>Qt::Vertical</enum></property>
+     <property name="sizeHint" stdset="0"><size><width>20</width><height>10</height></size></property>
+    </spacer>
+   </item>
+
+   <!-- BOTTONI -->
+   <item>
+    <layout class="QHBoxLayout" name="hl_buttons">
+     <property name="spacing"><number>12</number></property>
+     <item>
+      <spacer><property name="orientation"><enum>Qt::Horizontal</enum></property><property name="sizeHint" stdset="0"><size><width>40</width><height>20</height></size></property></spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="btn_cancel">
+       <property name="minimumSize"><size><width>120</width><height>38</height></size></property>
+       <property name="text"><string>Annulla</string></property>
+       <property name="styleSheet">
+        <string>QPushButton { background-color: #95a5a6; color: white; border-radius: 6px; font-family: Helvetica; font-size: 11pt; font-weight: bold; } QPushButton:hover { background-color: #7f8c8d; }</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="btn_save">
+       <property name="minimumSize"><size><width>120</width><height>38</height></size></property>
+       <property name="text"><string>✅ Salva</string></property>
+       <property name="default"><bool>true</bool></property>
+       <property name="styleSheet">
+        <string>QPushButton { background-color: #1abc9c; color: white; border-radius: 6px; font-family: Helvetica; font-size: 11pt; font-weight: bold; } QPushButton:hover { background-color: #16a085; }</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

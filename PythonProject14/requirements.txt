@@ -1,0 +1,10 @@
+PyQt5==5.15.11
+PyQt5-Qt5==5.15.2
+PyQt5_sip==12.18.0
+matplotlib>=3.9.0
+tkcalendar==1.6.1
+pymysql==1.1.0
+pyttsx3==2.99
+pywin32==311
+comtypes==1.4.15
+babel==2.18.0

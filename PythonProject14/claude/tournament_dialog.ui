@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>TournamentDialog</class>
+ <widget class="QDialog" name="TournamentDialog">
+  <property name="geometry">
+   <rect><x>0</x><y>0</y><width>520</width><height>440</height></rect>
+  </property>
+  <property name="windowTitle"><string>Torneo</string></property>
+  <property name="styleSheet">
+   <string>
+QDialog { background-color: #ecf0f1; }
+QLabel { color: #34495e; font-family: Helvetica; font-size: 12pt; }
+QLineEdit, QComboBox, QDoubleSpinBox, QSpinBox {
+    border: 1px solid #bdc3c7;
+    border-radius: 4px;
+    padding: 6px;
+    font-family: Helvetica;
+    font-size: 11pt;
+    background-color: white;
+}
+QLineEdit:focus, QComboBox:focus,
+QDoubleSpinBox:focus, QSpinBox:focus { border: 1px solid #3498db; }
+   </string>
+  </property>
+
+  <layout class="QVBoxLayout" name="verticalLayout_main">
+   <property name="spacing"><number>0</number></property>
+   <property name="leftMargin"><number>0</number></property>
+   <property name="topMargin"><number>0</number></property>
+   <property name="rightMargin"><number>0</number></property>
+   <property name="bottomMargin"><number>0</number></property>
+
+   <!-- HEADER -->
+   <item>
+    <widget class="QFrame" name="frame_header">
+     <property name="minimumSize"><size><width>0</width><height>60</height></size></property>
+     <property name="maximumSize"><size><width>16777215</width><height>60</height></size></property>
+     <property name="styleSheet"><string>QFrame#frame_header { background-color: #2c3e50; }</string></property>
+     <layout class="QVBoxLayout" name="vl_header">
+      <item>
+       <widget class="QLabel" name="label_dialog_title">
+        <property name="text"><string>Gestione Torneo</string></property>
+        <property name="alignment"><set>Qt::AlignCenter</set></property>
+        <property name="styleSheet">
+         <string>QLabel { color: white; font-family: Helvetica; font-size: 16pt; font-weight: bold; }</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+
+   <!-- FORM BODY -->
+   <item>
+    <layout class="QVBoxLayout" name="vl_body">
+     <property name="spacing"><number>16</number></property>
+     <property name="leftMargin"><number>30</number></property>
+     <property name="topMargin"><number>20</number></property>
+     <property name="rightMargin"><number>30</number></property>
+     <property name="bottomMargin"><number>20</number></property>
+
+     <item>
+      <widget class="QFrame" name="form_frame">
+       <property name="styleSheet">
+        <string>
+QFrame#form_frame {
+    background-color: #ffffff;
+    border: 1px solid #bdc3c7;
+    border-radius: 6px;
+}
+        </string>
+       </property>
+       <layout class="QGridLayout" name="gridLayout">
+        <property name="leftMargin"><number>20</number></property>
+        <property name="topMargin"><number>20</number></property>
+        <property name="rightMargin"><number>20</number></property>
+        <property name="bottomMargin"><number>20</number></property>
+        <property name="horizontalSpacing"><number>15</number></property>
+        <property name="verticalSpacing"><number>12</number></property>
+
+        <!-- ── riga 0: Nome ── -->
+        <item row="0" column="0">
+         <widget class="QLabel" name="label_nome"><property name="text"><string>Nome Torneo:</string></property></widget>
+        </item>
+        <item row="0" column="1">
+         <widget class="QLineEdit" name="entry_nome">
+          <property name="maxLength"><number>100</number></property>
+          <property name="placeholderText"><string>Inserisci il nome del torneo</string></property>
+         </widget>
+        </item>
+
+        <!-- ── riga 1: Tipo ── -->
+        <item row="1" column="0">
+         <widget class="QLabel" name="label_tipo"><property name="text"><string>Tipo:</string></property></widget>
+        </item>
+        <item row="1" column="1">
+         <widget class="QComboBox" name="combo_tipo">
+          <item><property name="text"><string>Singolo</string></property></item>
+          <item><property name="text"><string>Doppio / Squadre</string></property></item>
+         </widget>
+        </item>
+
+        <!-- ── separatore Informazioni Aggiuntive ── -->
+        <item row="2" column="0" colspan="2">
+         <widget class="QLabel" name="label_section_extra">
+          <property name="text"><string>Informazioni Aggiuntive</string></property>
+          <property name="styleSheet">
+           <string>QLabel { color: #2c3e50; font-weight: bold; font-size: 11pt; border-bottom: 1px solid #bdc3c7; padding-bottom: 4px; }</string>
+          </property>
+         </widget>
+        </item>
+
+        <!-- ── riga 3: Email Iscrizioni ── -->
+        <item row="3" column="0">
+         <widget class="QLabel" name="label_email">
+          <property name="text"><string>Email Iscrizioni:</string></property>
+         </widget>
+        </item>
+        <item row="3" column="1">
+         <widget class="QLineEdit" name="entry_email">
+          <property name="maxLength"><number>200</number></property>
+          <property name="placeholderText"><string>email@esempio.it (opzionale)</string></property>
+         </widget>
+        </item>
+
+        <!-- ── riga 4: Quota Iscrizione ── -->
+        <item row="4" column="0">
+         <widget class="QLabel" name="label_quota">
+          <property name="text"><string>Quota Iscrizione (€):</string></property>
+         </widget>
+        </item>
+        <item row="4" column="1">
+         <widget class="QDoubleSpinBox" name="spin_quota">
+          <property name="minimum"><double>0.00</double></property>
+          <property name="maximum"><double>9999.99</double></property>
+          <property name="decimals"><number>2</number></property>
+          <property name="singleStep"><double>1.00</double></property>
+          <property name="value"><double>0.00</double></property>
+          <property name="specialValueText"><string>Gratuito</string></property>
+         </widget>
+        </item>
+
+        <!-- ── riga 5: Max Partecipanti ── -->
+        <item row="5" column="0">
+         <widget class="QLabel" name="label_max">
+          <property name="text"><string>Max Partecipanti:</string></property>
+         </widget>
+        </item>
+        <item row="5" column="1">
+         <widget class="QSpinBox" name="spin_max">
+          <property name="minimum"><number>0</number></property>
+          <property name="maximum"><number>9999</number></property>
+          <property name="value"><number>0</number></property>
+          <property name="specialValueText"><string>Illimitato</string></property>
+         </widget>
+        </item>
+
+       </layout>
+      </widget>
+     </item>
+
+     <!-- BUTTONS -->
+     <item>
+      <layout class="QHBoxLayout" name="hl_buttons">
+       <property name="spacing"><number>15</number></property>
+       <item>
+        <spacer><property name="orientation"><enum>Qt::Horizontal</enum></property><property name="sizeHint" stdset="0"><size><width>40</width><height>20</height></size></property></spacer>
+       </item>
+       <item>
+        <widget class="QPushButton" name="btn_cancel">
+         <property name="minimumSize"><size><width>130</width><height>40</height></size></property>
+         <property name="text"><string>Annulla</string></property>
+         <property name="styleSheet">
+          <string>QPushButton { background-color: #95a5a6; color: white; border-radius: 6px; font-family: Helvetica; font-size: 12pt; font-weight: bold; } QPushButton:hover { background-color: #7f8c8d; }</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="btn_save">
+         <property name="minimumSize"><size><width>130</width><height>40</height></size></property>
+         <property name="text"><string>Salva</string></property>
+         <property name="styleSheet">
+          <string>QPushButton { background-color: #1abc9c; color: white; border-radius: 6px; font-family: Helvetica; font-size: 12pt; font-weight: bold; } QPushButton:hover { background-color: #16a085; }</string>
+         </property>
+         <property name="default"><bool>true</bool></property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>btn_save</sender>
+   <signal>clicked()</signal>
+   <receiver>TournamentDialog</receiver>
+   <slot>accept()</slot>
+  </connection>
+  <connection>
+   <sender>btn_cancel</sender>
+   <signal>clicked()</signal>
+   <receiver>TournamentDialog</receiver>
+   <slot>reject()</slot>
+  </connection>
+ </connections>
+</ui>

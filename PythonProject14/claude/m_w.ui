@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect><x>0</x><y>0</y><width>1200</width><height>800</height></rect>
+  </property>
+  <property name="windowTitle">
+   <string>🂡 Briscola Tournament Manager</string>
+  </property>
+  <property name="styleSheet">
+   <string>QMainWindow { background-color: #ecf0f1; }</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="verticalLayout_main">
+    <property name="spacing"><number>0</number></property>
+    <property name="leftMargin"><number>0</number></property>
+    <property name="topMargin"><number>0</number></property>
+    <property name="rightMargin"><number>0</number></property>
+    <property name="bottomMargin"><number>0</number></property>
+
+    <!-- HEADER BAR -->
+    <item>
+     <widget class="QFrame" name="frame_title">
+      <property name="minimumSize"><size><width>0</width><height>80</height></size></property>
+      <property name="maximumSize"><size><width>16777215</width><height>80</height></size></property>
+      <property name="styleSheet"><string>QFrame#frame_title { background-color: #2c3e50; }</string></property>
+      <property name="frameShape"><enum>QFrame::NoFrame</enum></property>
+      <property name="frameShadow"><enum>QFrame::Raised</enum></property>
+      <layout class="QVBoxLayout" name="verticalLayout_title">
+       <property name="spacing"><number>0</number></property>
+       <property name="leftMargin"><number>0</number></property>
+       <property name="topMargin"><number>0</number></property>
+       <property name="rightMargin"><number>0</number></property>
+       <property name="bottomMargin"><number>0</number></property>
+       <item>
+        <widget class="QLabel" name="title_label">
+         <property name="font"><font><family>Helvetica</family><pointsize>22</pointsize><weight>75</weight><bold>true</bold></font></property>
+         <property name="styleSheet"><string>QLabel { color: white; }</string></property>
+         <property name="text"><string>Briscola Tournament Manager</string></property>
+         <property name="alignment"><set>Qt::AlignCenter</set></property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+
+    <!-- CONTENT AREA (menu + stacked) -->
+    <item>
+     <widget class="QFrame" name="frame_content_area">
+      <property name="styleSheet"><string>QFrame#frame_content_area { background-color: #ecf0f1; }</string></property>
+      <property name="frameShape"><enum>QFrame::NoFrame</enum></property>
+      <property name="frameShadow"><enum>QFrame::Raised</enum></property>
+      <layout class="QHBoxLayout" name="horizontalLayout_content">
+       <property name="spacing"><number>0</number></property>
+       <property name="leftMargin"><number>0</number></property>
+       <property name="topMargin"><number>0</number></property>
+       <property name="rightMargin"><number>0</number></property>
+       <property name="bottomMargin"><number>0</number></property>
+
+       <!-- SIDE MENU -->
+       <item>
+        <widget class="QFrame" name="frame_menu">
+         <property name="minimumSize"><size><width>200</width><height>0</height></size></property>
+         <property name="maximumSize"><size><width>200</width><height>16777215</height></size></property>
+         <property name="styleSheet"><string>QFrame#frame_menu { background-color: #34495e; }</string></property>
+         <property name="frameShape"><enum>QFrame::NoFrame</enum></property>
+         <property name="frameShadow"><enum>QFrame::Raised</enum></property>
+         <layout class="QVBoxLayout" name="verticalLayout_menu">
+          <property name="spacing"><number>5</number></property>
+          <property name="leftMargin"><number>10</number></property>
+          <property name="topMargin"><number>5</number></property>
+          <property name="rightMargin"><number>10</number></property>
+          <property name="bottomMargin"><number>5</number></property>
+
+          <!-- 📋 Tornei — contiene anche la Classifica -->
+          <item>
+           <widget class="QPushButton" name="btn_list_tournaments">
+            <property name="minimumSize"><size><width>0</width><height>40</height></size></property>
+            <property name="font"><font><family>Helvetica</family><pointsize>12</pointsize></font></property>
+            <property name="styleSheet">
+             <string>QPushButton { background-color:#1abc9c; color:white; border:none; height:40px; border-radius:5px; }
+QPushButton:hover { background-color:#16a085; }</string>
+            </property>
+            <property name="text"><string>📋 Tornei</string></property>
+           </widget>
+          </item>
+
+          <!-- 👥 Partecipanti -->
+          <item>
+           <widget class="QPushButton" name="btn_manage_players">
+            <property name="minimumSize"><size><width>0</width><height>40</height></size></property>
+            <property name="font"><font><family>Helvetica</family><pointsize>12</pointsize></font></property>
+            <property name="styleSheet">
+             <string>QPushButton { background-color:#1abc9c; color:white; border:none; height:40px; border-radius:5px; }
+QPushButton:hover { background-color:#16a085; }</string>
+            </property>
+            <property name="text"><string>👥 Partecipanti</string></property>
+           </widget>
+          </item>
+
+          <!-- 🃏 Partite -->
+          <item>
+           <widget class="QPushButton" name="btn_manage_matches">
+            <property name="minimumSize"><size><width>0</width><height>40</height></size></property>
+            <property name="font"><font><family>Helvetica</family><pointsize>12</pointsize></font></property>
+            <property name="styleSheet">
+             <string>QPushButton { background-color:#1abc9c; color:white; border:none; height:40px; border-radius:5px; }
+QPushButton:hover { background-color:#16a085; }</string>
+            </property>
+            <property name="text"><string>🃏 Partite</string></property>
+           </widget>
+          </item>
+
+          <!--
+            btn_show_ranking RIMOSSO:
+            La classifica si consulta per torneo dal pannello Tornei
+            (pulsante "📊 Vedi Classifica" nel TournamentListWidget).
+            Non ha senso una classifica globale scollegata dal torneo.
+          -->
+
+          <!-- 📊 Dashboard -->
+          <item>
+           <widget class="QPushButton" name="btn_dashboard">
+            <property name="minimumSize"><size><width>0</width><height>40</height></size></property>
+            <property name="font"><font><family>Helvetica</family><pointsize>12</pointsize></font></property>
+            <property name="styleSheet">
+             <string>QPushButton { background-color:#1abc9c; color:white; border:none; height:40px; border-radius:5px; }
+QPushButton:hover { background-color:#16a085; }</string>
+            </property>
+            <property name="text"><string>📊 Dashboard</string></property>
+           </widget>
+          </item>
+
+          <item>
+           <spacer name="verticalSpacer_menu">
+            <property name="orientation"><enum>Qt::Vertical</enum></property>
+            <property name="sizeHint" stdset="0"><size><width>20</width><height>40</height></size></property>
+           </spacer>
+          </item>
+
+          <!-- ❌ Esci -->
+          <item>
+           <widget class="QPushButton" name="btn_exit_app">
+            <property name="minimumSize"><size><width>0</width><height>40</height></size></property>
+            <property name="font"><font><family>Helvetica</family><pointsize>12</pointsize></font></property>
+            <property name="styleSheet">
+             <string>QPushButton { background-color:#e74c3c; color:white; border:none; height:40px; border-radius:5px; }
+QPushButton:hover { background-color:#c0392b; }</string>
+            </property>
+            <property name="text"><string>❌ Esci</string></property>
+           </widget>
+          </item>
+
+         </layout>
+        </widget>
+       </item>
+
+       <!-- STACKED WIDGET -->
+       <item>
+        <widget class="QStackedWidget" name="stackedWidget">
+         <property name="styleSheet">
+          <string>QStackedWidget { background-color: #ecf0f1; }</string>
+         </property>
+         <property name="currentIndex"><number>0</number></property>
+         <widget class="QWidget" name="page_home">
+          <layout class="QVBoxLayout" name="verticalLayout_home">
+           <item>
+            <widget class="QLabel" name="label_home_message">
+             <property name="font"><font><family>Helvetica</family><pointsize>16</pointsize></font></property>
+             <property name="styleSheet"><string>QLabel { color: #2c3e50; }</string></property>
+             <property name="text">
+              <string>Benvenuto nel Briscola Tournament Manager!
+
+Seleziona un'opzione dal menu laterale.
+
+📋 Tornei  — crea, modifica ed elimina tornei; consulta la classifica
+👥 Partecipanti  — gestisci i giocatori e iscrivili ai tornei
+🃏 Partite  — inserisci partite e registra i risultati</string>
+             </property>
+             <property name="alignment"><set>Qt::AlignCenter</set></property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </widget>
+       </item>
+
+      </layout>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

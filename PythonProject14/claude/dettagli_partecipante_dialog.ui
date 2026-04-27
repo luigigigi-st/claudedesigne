@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>DettagliPartecipanteDialog</class>
+ <widget class="QDialog" name="DettagliPartecipanteDialog">
+  <property name="geometry">
+   <rect><x>0</x><y>0</y><width>600</width><height>700</height></rect>
+  </property>
+  <property name="windowTitle"><string>Dettagli e Modifica Partecipante</string></property>
+  <property name="styleSheet">
+   <string>
+QDialog {
+    background-color: #ecf0f1;
+}
+QLabel {
+    color: #34495e;
+    font-family: Helvetica;
+    font-size: 12pt;
+}
+QLabel#label_dialog_title {
+    color: white;
+    font-family: Helvetica;
+    font-size: 16pt;
+    font-weight: bold;
+}
+QFrame#frame_header {
+    background-color: #2c3e50;
+}
+/* Rimuove i bordi attorno ai gruppi di input */
+QFrame#form_frame {
+    background-color: #ffffff;
+    border: 1px solid #bdc3c7; /* Mantiene un bordo esterno per l'intero form */
+    border-radius: 6px;
+}
+QLabel.section_title { /* Style for section titles */
+    color: #2c3e50;
+    font-weight: bold;
+    font-size: 11pt;
+    border-bottom: 1px solid #bdc3c7;
+    padding-bottom: 4px;
+    margin-top: 10px; /* Spazio sopra il titolo della sezione */
+    margin-bottom: 5px; /* Spazio sotto il titolo della sezione */
+}
+QLineEdit, QDateEdit {
+    border: 1px solid #bdc3c7;
+    border-radius: 4px;
+    padding: 6px;
+    font-family: Helvetica;
+    font-size: 11pt;
+    background-color: white;
+}
+QLineEdit:focus, QDateEdit:focus {
+    border: 1px solid #3498db;
+}
+QListWidget {
+    border: 1px solid #bdc3c7;
+    border-radius: 4px;
+    padding: 5px;
+    font-family: Helvetica;
+    font-size: 11pt;
+    background-color: white;
+}
+QListWidget::item {
+    padding: 3px;
+}
+QPushButton {
+    background-color: #1abc9c;
+    color: white;
+    border-radius: 6px;
+    font-family: Helvetica;
+    font-size: 12pt;
+    font-weight: bold;
+}
+QPushButton:hover {
+    background-color: #16a085;
+}
+QPushButton#btn_cancel {
+    background-color: #95a5a6;
+}
+QPushButton#btn_cancel:hover {
+    background-color: #7f8c8d;
+}
+   </string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout_main">
+   <property name="spacing"><number>0</number></property>
+   <property name="leftMargin"><number>0</number></property>
+   <property name="topMargin"><number>0</number></property>
+   <property name="rightMargin"><number>0</number></property>
+   <property name="bottomMargin"><number>0</number></property>
+   <item>
+    <widget class="QFrame" name="frame_header">
+     <property name="minimumSize"><size><width>0</width><height>60</height></size></property>
+     <property name="maximumSize"><size><width>16777215</width><height>60</height></size></property>
+     <property name="frameShape"><enum>QFrame::NoFrame</enum></property>
+     <property name="frameShadow"><enum>QFrame::Raised</enum></property>
+     <layout class="QVBoxLayout" name="vl_header">
+      <item>
+       <widget class="QLabel" name="label_dialog_title">
+        <property name="text"><string>Dettagli e Modifica Partecipante</string></property>
+        <property name="alignment"><set>Qt::AlignCenter</set></property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <layout class="QVBoxLayout" name="vl_body">
+     <property name="spacing"><number>16</number></property>
+     <property name="leftMargin"><number>30</number></property>
+     <property name="topMargin"><number>20</number></property>
+     <property name="rightMargin"><number>30</number></property>
+     <property name="bottomMargin"><number>20</number></property>
+     <item>
+      <widget class="QFrame" name="form_frame">
+       <layout class="QVBoxLayout" name="verticalLayout_form_content">
+        <property name="leftMargin"><number>20</number></property>
+        <property name="topMargin"><number>15</number></property>
+        <property name="rightMargin"><number>20</number></property>
+        <property name="bottomMargin"><number>15</number></property>
+        <property name="spacing"><number>12</number></property>
+
+        <!-- Dati Anagrafici -->
+        <item>
+         <widget class="QLabel" name="label_section_anagrafica">
+          <property name="text"><string>Dati Anagrafici</string></property>
+          <property name="class" stdset="0"><string>section_title</string></property>
+         </widget>
+        </item>
+        <item>
+         <layout class="QGridLayout" name="gridLayout_anagrafica">
+          <property name="horizontalSpacing"><number>15</number></property>
+          <property name="verticalSpacing"><number>10</number></property>
+          <item row="0" column="0">
+           <widget class="QLabel" name="label_nome_static"><property name="text"><string>Nome:</string></property></widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QLineEdit" name="entry_nome"><property name="maxLength"><number>50</number></property></widget>
+          </item>
+          <item row="0" column="2">
+           <widget class="QLabel" name="label_cognome_static"><property name="text"><string>Cognome:</string></property></widget>
+          </item>
+          <item row="0" column="3">
+           <widget class="QLineEdit" name="entry_cognome"><property name="maxLength"><number>50</number></property></widget>
+          </item>
+         </layout>
+        </item>
+
+        <!-- Indirizzo -->
+        <item>
+         <widget class="QLabel" name="label_section_indirizzo">
+          <property name="text"><string>Indirizzo</string></property>
+          <property name="class" stdset="0"><string>section_title</string></property>
+         </widget>
+        </item>
+        <item>
+         <layout class="QGridLayout" name="gridLayout_indirizzo">
+          <property name="horizontalSpacing"><number>15</number></property>
+          <property name="verticalSpacing"><number>10</number></property>
+          <item row="0" column="0">
+           <widget class="QLabel" name="label_via_static"><property name="text"><string>Via:</string></property></widget>
+          </item>
+          <item row="0" column="1" colspan="3">
+           <widget class="QLineEdit" name="entry_via"><property name="maxLength"><number>100</number></property></widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QLabel" name="label_civico_static"><property name="text"><string>N° Civico:</string></property></widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="QLineEdit" name="entry_civico"><property name="maxLength"><number>10</number></property></widget>
+          </item>
+          <item row="1" column="2">
+           <widget class="QLabel" name="label_cap_static"><property name="text"><string>CAP:</string></property></widget>
+          </item>
+          <item row="1" column="3">
+           <widget class="QLineEdit" name="entry_cap"><property name="maxLength"><number>10</number></property></widget>
+          </item>
+          <item row="2" column="0">
+           <widget class="QLabel" name="label_citta_static"><property name="text"><string>Città:</string></property></widget>
+          </item>
+          <item row="2" column="1" colspan="3">
+           <widget class="QLineEdit" name="entry_citta"><property name="maxLength"><number>100</number></property></widget>
+          </item>
+         </layout>
+        </item>
+
+        <!-- Tornei Iscritto -->
+        <item>
+         <widget class="QLabel" name="label_section_tornei">
+          <property name="text"><string>Tornei Iscritto</string></property>
+          <property name="class" stdset="0"><string>section_title</string></property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QListWidget" name="list_tornei_iscritti">
+          <property name="alternatingRowColors"><bool>true</bool></property>
+          <property name="selectionMode"><enum>QAbstractItemView::NoSelection</enum></property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="hl_buttons">
+       <property name="spacing"><number>15</number></property>
+       <item>
+        <spacer><property name="orientation"><enum>Qt::Horizontal</enum></property><property name="sizeHint" stdset="0"><size><width>40</width><height>20</height></size></property></spacer>
+       </item>
+       <item>
+        <widget class="QPushButton" name="btn_cancel">
+         <property name="minimumSize"><size><width>130</width><height>40</height></size></property>
+         <property name="text"><string>Annulla</string></property>
+         <property name="objectName">
+          <string>btn_cancel</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="btn_save">
+         <property name="minimumSize"><size><width>130</width><height>40</height></size></property>
+         <property name="text"><string>Salva</string></property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

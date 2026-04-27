@@ -1,0 +1,374 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>PartecipantiWidget</class>
+ <widget class="QWidget" name="PartecipantiWidget">
+  <property name="geometry">
+   <rect><x>0</x><y>0</y><width>900</width><height>750</height></rect>
+  </property>
+  <property name="windowTitle"><string>Partecipanti</string></property>
+  <property name="styleSheet">
+   <string>
+QWidget#PartecipantiWidget { background-color: #ecf0f1; }
+   </string>
+  </property>
+
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <property name="spacing"><number>0</number></property>
+   <property name="leftMargin"><number>0</number></property>
+   <property name="topMargin"><number>0</number></property>
+   <property name="rightMargin"><number>0</number></property>
+   <property name="bottomMargin"><number>0</number></property>
+
+   <item>
+    <layout class="QVBoxLayout" name="vl_content">
+     <property name="spacing"><number>15</number></property>
+     <property name="leftMargin"><number>20</number></property>
+     <property name="topMargin"><number>20</number></property>
+     <property name="rightMargin"><number>20</number></property>
+     <property name="bottomMargin"><number>20</number></property>
+
+     <!-- TITOLO -->
+     <item>
+      <widget class="QLabel" name="label_title">
+       <property name="text">
+        <string>&lt;b&gt;&lt;span style="font-size:20pt; color:#2c3e50;"&gt;👥 Partecipanti&lt;/span&gt;&lt;/b&gt;</string>
+       </property>
+       <property name="alignment"><set>Qt::AlignCenter</set></property>
+      </widget>
+     </item>
+
+     <!-- FILTRI -->
+     <item>
+      <widget class="QFrame" name="frame_filter">
+       <property name="styleSheet">
+        <string>
+QFrame#frame_filter { background-color: #ffffff; border: 1px solid #bdc3c7; border-radius: 6px; }
+QLabel { color: #34495e; font-family: Helvetica; font-size: 12pt; }
+QLineEdit, QComboBox { border: 1px solid #bdc3c7; border-radius: 4px; padding: 6px; font-family: Helvetica; font-size: 11pt; }
+QLineEdit:focus, QComboBox:focus { border: 1px solid #3498db; }
+        </string>
+       </property>
+       <layout class="QGridLayout" name="gridLayout_filter">
+        <property name="leftMargin"><number>15</number></property>
+        <property name="topMargin"><number>15</number></property>
+        <property name="rightMargin"><number>15</number></property>
+        <property name="bottomMargin"><number>15</number></property>
+        <property name="horizontalSpacing"><number>15</number></property>
+        <property name="verticalSpacing"><number>10</number></property>
+
+        <item row="0" column="0">
+         <widget class="QLabel" name="label_filter_nome"><property name="text"><string>Nome:</string></property></widget>
+        </item>
+        <item row="0" column="1">
+         <widget class="QLineEdit" name="entry_filter_nome">
+          <property name="placeholderText"><string>Filtra per nome...</string></property>
+         </widget>
+        </item>
+        <item row="0" column="2">
+         <widget class="QLabel" name="label_filter_cognome"><property name="text"><string>Cognome:</string></property></widget>
+        </item>
+        <item row="0" column="3">
+         <widget class="QLineEdit" name="entry_filter_cognome">
+          <property name="placeholderText"><string>Filtra per cognome...</string></property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </item>
+
+     <!-- TAB BAR stile schermata tornei -->
+     <item>
+      <widget class="QFrame" name="frame_tabs">
+       <property name="styleSheet">
+        <string>QFrame#frame_tabs { background-color: #2c3e50; border-radius: 6px; }</string>
+       </property>
+       <property name="maximumSize"><size><width>16777215</width><height>48</height></size></property>
+       <layout class="QHBoxLayout" name="hl_tabs">
+        <property name="spacing"><number>0</number></property>
+        <property name="leftMargin"><number>8</number></property>
+        <property name="topMargin"><number>6</number></property>
+        <property name="rightMargin"><number>8</number></property>
+        <property name="bottomMargin"><number>6</number></property>
+
+        <item>
+         <widget class="QPushButton" name="btn_tab_singoli">
+          <property name="text"><string>🏅 Singoli</string></property>
+          <property name="checkable"><bool>true</bool></property>
+          <property name="checked"><bool>true</bool></property>
+          <property name="styleSheet">
+           <string>
+QPushButton { background-color: #1abc9c; color: white; border: none; border-radius: 5px; font-family: Helvetica; font-size: 12pt; font-weight: bold; padding: 6px 20px; }
+QPushButton:hover { background-color: #16a085; }
+QPushButton:checked { background-color: #1abc9c; }
+QPushButton:!checked { background-color: transparent; color: #bdc3c7; }
+QPushButton:!checked:hover { background-color: #34495e; color: white; }
+           </string>
+          </property>
+         </widget>
+        </item>
+
+        <item>
+         <widget class="QPushButton" name="btn_tab_coppie">
+          <property name="text"><string>👫 Coppie</string></property>
+          <property name="checkable"><bool>true</bool></property>
+          <property name="checked"><bool>false</bool></property>
+          <property name="styleSheet">
+           <string>
+QPushButton { background-color: transparent; color: #bdc3c7; border: none; border-radius: 5px; font-family: Helvetica; font-size: 12pt; font-weight: bold; padding: 6px 20px; }
+QPushButton:hover { background-color: #34495e; color: white; }
+QPushButton:checked { background-color: #e67e22; color: white; }
+QPushButton:checked:hover { background-color: #ca6f1e; }
+           </string>
+          </property>
+         </widget>
+        </item>
+
+        <item>
+         <spacer><property name="orientation"><enum>Qt::Horizontal</enum></property><property name="sizeHint" stdset="0"><size><width>40</width><height>20</height></size></property></spacer>
+        </item>
+
+        <item>
+         <widget class="QLabel" name="label_ordina_per">
+          <property name="text"><string>Ordina per:</string></property>
+          <property name="styleSheet"><string>QLabel { color: #ecf0f1; font-family: Helvetica; font-size: 10pt; }</string></property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QComboBox" name="combo_ordina_per">
+          <property name="minimumWidth"><number>130</number></property>
+          <property name="styleSheet">
+           <string>QComboBox { border:1px solid #bdc3c7; border-radius:4px; padding:4px 8px; font-family:Helvetica; font-size:10pt; background-color:white; min-width:130px; } QComboBox:focus { border:1px solid #3498db; }</string>
+          </property>
+          <item><property name="text"><string>Cognome</string></property></item>
+          <item><property name="text"><string>Nome</string></property></item>
+          <item><property name="text"><string>Soprannome</string></property></item>
+          <item><property name="text"><string>Nome coppia</string></property></item>
+         </widget>
+        </item>
+
+       </layout>
+      </widget>
+     </item>
+
+     <!-- STACKED: pagina singoli / pagina coppie -->
+     <item>
+      <widget class="QStackedWidget" name="stacked_partecipanti">
+       <property name="currentIndex"><number>0</number></property>
+
+       <!-- PAGINA SINGOLI -->
+       <widget class="QWidget" name="page_singoli">
+        <layout class="QVBoxLayout" name="vl_singoli">
+         <property name="spacing"><number>10</number></property>
+         <property name="leftMargin"><number>0</number></property>
+         <property name="topMargin"><number>0</number></property>
+         <property name="rightMargin"><number>0</number></property>
+         <property name="bottomMargin"><number>0</number></property>
+
+         <item>
+          <layout class="QHBoxLayout" name="hl_filter_singoli">
+           <property name="spacing"><number>8</number></property>
+           <item>
+            <widget class="QLabel" name="label_torneo_singoli">
+             <property name="text"><string>Torneo:</string></property>
+             <property name="styleSheet"><string>QLabel { color: #34495e; font-family: Helvetica; font-size: 11pt; font-weight: bold; }</string></property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QComboBox" name="combo_tornei_singoli">
+             <property name="minimumWidth"><number>200</number></property>
+             <property name="styleSheet">
+              <string>QComboBox { border:1px solid #bdc3c7; border-radius:4px; padding:5px 10px; font-family:Helvetica; font-size:11pt; background-color:white; } QComboBox:focus { border:1px solid #1abc9c; }</string>
+             </property>
+             <item><property name="text"><string>Tutti i tornei</string></property></item>
+            </widget>
+           </item>
+           <item>
+            <spacer><property name="orientation"><enum>Qt::Horizontal</enum></property><property name="sizeHint" stdset="0"><size><width>40</width><height>20</height></size></property></spacer>
+           </item>
+          </layout>
+         </item>
+
+         <item>
+          <widget class="QTreeWidget" name="participants_tree">
+           <property name="font"><font><family>Helvetica</family><pointsize>10</pointsize></font></property>
+           <property name="alternatingRowColors"><bool>true</bool></property>
+           <property name="selectionMode"><enum>QAbstractItemView::SingleSelection</enum></property>
+           <property name="selectionBehavior"><enum>QAbstractItemView::SelectRows</enum></property>
+           <property name="rootIsDecorated"><bool>false</bool></property>
+           <property name="styleSheet">
+            <string>
+QTreeWidget { background-color: white; border: 1px solid #bdc3c7; border-radius: 4px; }
+QTreeWidget::item { padding: 4px; }
+QTreeWidget::item:selected { background-color: #3498db; color: white; }
+QHeaderView::section { background-color: #34495e; color: white; font-weight: bold; padding: 6px; border: none; }
+            </string>
+           </property>
+           <column><property name="text"><string>ID</string></property><property name="minimumWidth"><number>45</number></property></column>
+           <column><property name="text"><string>Nome</string></property><property name="minimumWidth"><number>120</number></property></column>
+           <column><property name="text"><string>Cognome</string></property><property name="minimumWidth"><number>120</number></property></column>
+           <column><property name="text"><string>Soprannome</string></property><property name="minimumWidth"><number>120</number></property></column>
+           <column><property name="text"><string>Città</string></property><property name="minimumWidth"><number>100</number></property></column>
+           <column><property name="text"><string>Torneo</string></property><property name="minimumWidth"><number>150</number></property></column>
+          </widget>
+         </item>
+
+         <item>
+          <layout class="QHBoxLayout" name="hl_buttons_singoli">
+           <property name="spacing"><number>15</number></property>
+           <item>
+            <widget class="QPushButton" name="btn_edit">
+             <property name="minimumSize"><size><width>150</width><height>40</height></size></property>
+             <property name="text"><string>✏️ Modifica</string></property>
+             <property name="styleSheet"><string>QPushButton{background-color:#3498db;color:white;border-radius:6px;font-family:Helvetica;font-size:12pt;font-weight:bold;}QPushButton:hover{background-color:#2980b9;}</string></property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="btn_elimina_singolo">
+             <property name="minimumSize"><size><width>150</width><height>40</height></size></property>
+             <property name="text"><string>🗑️ Elimina</string></property>
+             <property name="styleSheet"><string>QPushButton{background-color:#e74c3c;color:white;border-radius:6px;font-family:Helvetica;font-size:12pt;font-weight:bold;}QPushButton:hover{background-color:#c0392b;}</string></property>
+            </widget>
+           </item>
+           <item>
+            <spacer><property name="orientation"><enum>Qt::Horizontal</enum></property><property name="sizeHint" stdset="0"><size><width>40</width><height>20</height></size></property></spacer>
+           </item>
+           <item>
+            <widget class="QPushButton" name="btn_iscrivi_singolo">
+             <property name="minimumSize"><size><width>210</width><height>40</height></size></property>
+             <property name="text"><string>🏷️ Iscrivi Singolo</string></property>
+             <property name="styleSheet"><string>QPushButton{background-color:#9b59b6;color:white;border-radius:6px;font-family:Helvetica;font-size:12pt;font-weight:bold;}QPushButton:hover{background-color:#8e44ad;}</string></property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+
+        </layout>
+       </widget>
+
+       <!-- PAGINA COPPIE -->
+       <widget class="QWidget" name="page_coppie">
+        <layout class="QVBoxLayout" name="vl_coppie">
+         <property name="spacing"><number>10</number></property>
+         <property name="leftMargin"><number>0</number></property>
+         <property name="topMargin"><number>0</number></property>
+         <property name="rightMargin"><number>0</number></property>
+         <property name="bottomMargin"><number>0</number></property>
+
+         <item>
+          <layout class="QHBoxLayout" name="hl_filter_coppie">
+           <property name="spacing"><number>8</number></property>
+           <item>
+            <widget class="QLabel" name="label_torneo_coppie">
+             <property name="text"><string>Torneo:</string></property>
+             <property name="styleSheet"><string>QLabel { color: #34495e; font-family: Helvetica; font-size: 11pt; font-weight: bold; }</string></property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QComboBox" name="combo_tornei_coppie">
+             <property name="minimumWidth"><number>200</number></property>
+             <property name="styleSheet">
+              <string>QComboBox { border:1px solid #bdc3c7; border-radius:4px; padding:5px 10px; font-family:Helvetica; font-size:11pt; background-color:white; } QComboBox:focus { border:1px solid #e67e22; }</string>
+             </property>
+             <item><property name="text"><string>Tutti i tornei</string></property></item>
+            </widget>
+           </item>
+           <item>
+            <spacer><property name="orientation"><enum>Qt::Horizontal</enum></property><property name="sizeHint" stdset="0"><size><width>40</width><height>20</height></size></property></spacer>
+           </item>
+          </layout>
+         </item>
+
+         <item>
+          <layout class="QHBoxLayout" name="hl_expand_coppie">
+           <property name="spacing"><number>8</number></property>
+           <item>
+            <widget class="QPushButton" name="btn_toggle_coppie">
+             <property name="maximumSize"><size><width>160</width><height>32</height></size></property>
+             <property name="text"><string>Espandi / Comprimi</string></property>
+             <property name="styleSheet"><string>QPushButton{background-color:#7f8c8d;color:white;border-radius:5px;font-family:Helvetica;font-size:10pt;font-weight:bold;}QPushButton:hover{background-color:#636e72;}</string></property>
+            </widget>
+           </item>
+           <item>
+            <spacer><property name="orientation"><enum>Qt::Horizontal</enum></property><property name="sizeHint" stdset="0"><size><width>40</width><height>20</height></size></property></spacer>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <widget class="QTreeWidget" name="coppie_tree">
+           <property name="font"><font><family>Helvetica</family><pointsize>10</pointsize></font></property>
+           <property name="alternatingRowColors"><bool>true</bool></property>
+           <property name="selectionMode"><enum>QAbstractItemView::SingleSelection</enum></property>
+           <property name="selectionBehavior"><enum>QAbstractItemView::SelectRows</enum></property>
+           <property name="rootIsDecorated"><bool>true</bool></property>
+           <property name="styleSheet">
+            <string>
+QTreeWidget { background-color: white; border: 1px solid #bdc3c7; border-radius: 4px; }
+QTreeWidget::item { padding: 4px; }
+QTreeWidget::item:selected { background-color: #e67e22; color: white; }
+QHeaderView::section { background-color: #34495e; color: white; font-weight: bold; padding: 6px; border: none; }
+            </string>
+           </property>
+           <column><property name="text"><string>Coppia / Giocatore</string></property><property name="minimumWidth"><number>200</number></property></column>
+           <column><property name="text"><string>Soprannome</string></property><property name="minimumWidth"><number>130</number></property></column>
+           <column><property name="text"><string>Torneo</string></property><property name="minimumWidth"><number>160</number></property></column>
+           <column><property name="text"><string>Città</string></property><property name="minimumWidth"><number>100</number></property></column>
+          </widget>
+         </item>
+
+         <item>
+          <layout class="QHBoxLayout" name="hl_buttons_coppie">
+           <property name="spacing"><number>10</number></property>
+           <item>
+            <widget class="QPushButton" name="btn_modifica_coppia">
+             <property name="minimumSize"><size><width>130</width><height>40</height></size></property>
+             <property name="text"><string>✏️ Modifica</string></property>
+             <property name="styleSheet"><string>QPushButton{background-color:#3498db;color:white;border-radius:6px;font-family:Helvetica;font-size:11pt;font-weight:bold;}QPushButton:hover{background-color:#2980b9;}</string></property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="btn_elimina_coppia">
+             <property name="minimumSize"><size><width>130</width><height>40</height></size></property>
+             <property name="text"><string>🗑️ Elimina</string></property>
+             <property name="styleSheet"><string>QPushButton{background-color:#e74c3c;color:white;border-radius:6px;font-family:Helvetica;font-size:11pt;font-weight:bold;}QPushButton:hover{background-color:#c0392b;}</string></property>
+            </widget>
+           </item>
+           <item>
+            <spacer><property name="orientation"><enum>Qt::Horizontal</enum></property><property name="sizeHint" stdset="0"><size><width>20</width><height>20</height></size></property></spacer>
+           </item>
+           <item>
+            <widget class="QPushButton" name="btn_abbina_singoli">
+             <property name="minimumSize"><size><width>180</width><height>40</height></size></property>
+             <property name="text"><string>🔀 Abbina Singoli</string></property>
+             <property name="styleSheet"><string>QPushButton{background-color:#3498db;color:white;border-radius:6px;font-family:Helvetica;font-size:11pt;font-weight:bold;}QPushButton:hover{background-color:#2980b9;}</string></property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="btn_iscrivi_singolo_attesa">
+             <property name="minimumSize"><size><width>210</width><height>40</height></size></property>
+             <property name="text"><string>⏳ Iscrivi in Attesa</string></property>
+             <property name="styleSheet"><string>QPushButton{background-color:#f39c12;color:white;border-radius:6px;font-family:Helvetica;font-size:11pt;font-weight:bold;}QPushButton:hover{background-color:#d68910;}</string></property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="btn_iscrivi_coppia">
+             <property name="minimumSize"><size><width>180</width><height>40</height></size></property>
+             <property name="text"><string>👫 Iscrivi Coppia</string></property>
+             <property name="styleSheet"><string>QPushButton{background-color:#e67e22;color:white;border-radius:6px;font-family:Helvetica;font-size:11pt;font-weight:bold;}QPushButton:hover{background-color:#ca6f1e;}</string></property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+
+        </layout>
+       </widget>
+
+      </widget>
+     </item>
+
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
